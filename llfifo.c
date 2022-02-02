@@ -66,17 +66,14 @@ int llfifo_enqueue(llfifo_t *fifo, void *element){
         }    
     }
     else{
-        printf("Length Exceeds Capacity\n");
         element_t *createnode = (element_t *)malloc(sizeof(element_t));
         createnode->element = element;
         createnode->next = NULL;
         if((fifo->front == NULL)&&(fifo->rear == NULL)){
-            printf("Queuesize is empty\n");
             fifo->front = createnode;
             fifo->rear = createnode;
         }
         else{
-            printf("Queuesize is not empty - Memory Allocated for the new member\n");
             fifo->rear->next = createnode;
             fifo->rear = createnode;
             fifo->rear->element = element;
